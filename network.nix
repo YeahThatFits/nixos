@@ -2,7 +2,7 @@
   networking = {
     hostName = "nixos"; # Define your hostname.
     networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     enableIPv6 = true;
 
     nat = {
@@ -37,13 +37,13 @@
     '';
   };
 
-  services.openssh = {
-    enable = true;
-    ports = [ 22552 ];
-    settings = {
-      PermitRootLogin = "no";
-      PasswordAuthentication = false;
-      KbdInteractiveAuthentication = false;
-    };
-  };
+  #services.openssh = {
+    #enable = true;
+    #ports = [ 22552 ];
+    #settings = {
+      #PermitRootLogin = "no";
+      #PasswordAuthentication = false;
+      #KbdInteractiveAuthentication = false;
+    #};
+  #};
 }
