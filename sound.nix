@@ -1,6 +1,8 @@
 {
   security.rtkit.enable = true;
   
+  hardware.pulseaudio.enable = false;
+  
   services.pipewire = {
     enable = true;
     audio.enable = true;
@@ -11,24 +13,5 @@
     wireplumber.enable = true;
   };
 
-  services.mpd = {
-    enable = true;
-    musicDirectory = "/media/ext1/music";
-    extraConfig = ''
-    db_file "/home/samuel/.config/mpd/database"
-    # auto_update "yes"
-    # restore_paused "yes"
-    playlist_directory	"/home/samuel/.config/mpd/playlists"
-      audio_output {
-        type "pipewire"
-        name "My PipeWire Output"
-      }
-    '';
-    network.listenAddress = "any";
-  };
-  services.mpd.user = "samuel";
-  systemd.services.mpd.environment = {
-      # https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/609
-      XDG_RUNTIME_DIR = "/run/user/1000"; # User-id 1000 must match above user. MPD will look inside this directory for the PipeWire socket.
-  };
+ 
 }

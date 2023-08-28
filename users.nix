@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  users.mutableUsers = false;
+  users.mutableUsers = true;
   # mkpasswd
   users.users.root.hashedPassword = "!";
   users.groups = {
@@ -15,10 +15,10 @@
     uid = 1000;
     group = "samuel";
     extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
-    # packages = with pkgs; [
-    #   firefox
-    #   tree
-    # ];
+    packages = with pkgs; [
+        flatpak
+        gnome.gnome-software
+    ];
   };
 
   # sudo

@@ -3,7 +3,7 @@
     
     hostName = "nixos"; # Define your hostname.
     networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-    networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     enableIPv6 = true;
 
     nat = {
@@ -19,24 +19,9 @@
       allowedUDPPorts = [ 53 51820 ];
     };
 
-    wg-quick.interfaces = {
-      # "wg0" is the network interface name. You can name the interface arbitrarily.
-      wg0 = {
-        autostart = true;
-        configFile = "/etc/nixos/wg_private.conf";
-        peers = [{
-            persistentKeepalive = 25;
-        }];
-      };
-    };
+    
   };
   
-  services.dnsmasq = {
-    enable = true;
-    extraConfig = ''
-      interface=wg0
-    '';
-  };
 
   #services.openssh = {
     #enable = true;

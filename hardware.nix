@@ -7,17 +7,17 @@
     systemd-boot.enable = false;
     efi = {
       canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot";
+      efiSysMountPoint = "/boot/efi";
     };
   };
 
-  fileSystems."/media/ext2" =
-    { noCheck = true;
-    };
+  #fileSystems."/media/ext2" =
+    #{ noCheck = true;
+    #};
 
-  fileSystems."/media/ext1" =
-    { noCheck = true;
-    };
+  #fileSystems."/media/ext1" =
+    #{ noCheck = true;
+    #};
 
   powerManagement.cpuFreqGovernor = "balanced";
 
