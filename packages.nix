@@ -32,21 +32,12 @@
   environment.systemPackages = with pkgs; [
    
     # libraries
-    poppler
     ntfs3g
     linuxHeaders
     linux-firmware
     fakeroot
     alsa-utils
     alsa-firmware
-
-    # network
-    nettools
-    nmap
-    sshfs
-    netcat-gnu
-    wireguard-tools
-    openssh
 
     # terminal utilities
     streamlink
@@ -77,18 +68,13 @@
     jq
     mediainfo
     imagemagick
-    python311Packages.fontforge
     libnotify
     flatpak
     flatpak-builder
 
     # system utilities
-    efibootmgr
-    os-prober
-    light
-    wev
-    xorg.xev
-    upower
+    asusctl
+    supergfxctl
 
     # !!!!!!!!!!!!!!! #
     # dev environment #
@@ -100,15 +86,13 @@
     rust-analyzer
 
     # python
-    python39
-    python311Packages.pip
+    conda
 
     # javascript
     nodejs_20
     
     # agnostic
     git
-
 
     
   ];
@@ -120,5 +104,7 @@
   };
   
   services.flatpak.enable = true;
+  services.asusd.enable = true;
+  services.supergfxd.enable = true;
 
 }
