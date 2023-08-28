@@ -13,7 +13,7 @@
       ./sound.nix
       ./time_locale.nix
       ./systemd_change_bg.nix
-      # ./systemd_mako.nix
+      
    ];
 
   system.copySystemConfiguration = true;

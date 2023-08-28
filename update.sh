@@ -1,7 +1,7 @@
 #!/bin/sh
 
 set -e
-root="/home/sabo/pr/nixos"
+root="/home/samuel/pr/nixos"
 
 chown root:root "$root"/wg_private.conf
 chmod 600 "$root"/wg_private.conf

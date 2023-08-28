@@ -5,15 +5,15 @@
   # mkpasswd
   users.users.root.hashedPassword = "$y$j9T$jNNA0ypXSyA5w/mJuVEv40$47Nj8hIM95QdQdUFQGdO9Cf/m8DTKun2WFIeDuOzYuC";
   users.groups = {
-    sabo.gid = 1000;
+    samuel.gid = 1000;
   };
-  users.users.sabo = {
+  users.users.samuel = {
     hashedPassword = "$y$j9T$ZJNqt.Mr7MiOpsgfbGGRt.$7IzejPdTbEOT6sYAvIUB2P/Ro.54nJJIRR1kw0Zhvt1";
     isNormalUser = true;
-    home = "/home/sabo";
+    home = "/home/samuel";
     shell = pkgs.zsh;
     uid = 1000;
-    group = "sabo";
+    group = "samuel";
     extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
     # packages = with pkgs; [
     #   firefox

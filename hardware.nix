@@ -19,17 +19,7 @@
     { noCheck = true;
     };
 
-  fileSystems."/media/win1" =
-    { device = "/dev/disk/by-uuid/C4A6BC42A6BC3730";
-      fsType = "ntfs";
-    };
-
-  fileSystems."/media/win2" =
-    { device = "/dev/disk/by-uuid/9A629A3C629A1CD7";
-      fsType = "ntfs";
-    };
-
-  powerManagement.cpuFreqGovernor = "performance";
+  powerManagement.cpuFreqGovernor = "balanced";
 
   hardware.opengl = {
     enable = true;
@@ -43,8 +33,6 @@
     modesetting.enable = true;
     open = false;
     nvidiaSettings = true;
-    # package = ... # select version
-    forceFullCompositionPipeline = false;
   };
 
   # Enable CUPS to print documents.
@@ -54,5 +42,5 @@
   # hardware.bluetooth.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  services.xserver.libinput.enable = true;
 }
