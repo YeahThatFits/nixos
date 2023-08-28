@@ -3,12 +3,12 @@
 {
   users.mutableUsers = false;
   # mkpasswd
-  users.users.root.hashedPassword = "$y$j9T$jNNA0ypXSyA5w/mJuVEv40$47Nj8hIM95QdQdUFQGdO9Cf/m8DTKun2WFIeDuOzYuC";
+  users.users.root.hashedPassword = "!";
   users.groups = {
     samuel.gid = 1000;
   };
   users.users.samuel = {
-    hashedPassword = "$y$j9T$ZJNqt.Mr7MiOpsgfbGGRt.$7IzejPdTbEOT6sYAvIUB2P/Ro.54nJJIRR1kw0Zhvt1";
+    hashedPassword = "!";
     isNormalUser = true;
     home = "/home/samuel";
     shell = pkgs.zsh;
