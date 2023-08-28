@@ -28,7 +28,6 @@
     ranger
     htop
     newsboat
-    ncmpcpp
     (ncmpcpp.override { visualizerSupport = true; })
     ncdu
 
@@ -69,7 +68,6 @@
     dialog
     bat
     which
-    poppler_utils
     p7zip
     atool
     unrar
@@ -93,6 +91,7 @@
     xorg.xev
     xorg.xrandr
     upower
+    pulseaudio
 
     # wayland utilities
     mako
