@@ -75,6 +75,7 @@
     # system utilities
     asusctl
     supergfxctl
+    auto-cpufreq
 
     # !!!!!!!!!!!!!!! #
     # dev environment #
