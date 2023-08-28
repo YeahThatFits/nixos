@@ -12,7 +12,6 @@
       ./graphical_environment.nix
       ./sound.nix
       ./time_locale.nix
-      ./systemd_change_bg.nix
       
    ];
 
