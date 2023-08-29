@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 
 
-
 {
   nixpkgs.config.allowUnfree = true;
   # List packages installed in system profile. To search, run:
@@ -21,7 +20,7 @@
     gnome-connections
     simple-scan
     gnome-usage
-    gnome-console
+    #gnome-console
   ]) ++ 
   (with pkgs.gnome; [
     gnome-calculator
@@ -58,90 +57,86 @@
     pkgs.nano
   ];
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = [
 
     #gnome shit
-    gnomeExtensions.appindicator
-    gnomeExtensions.dash-to-dock
-    gnomeExtensions.blur-my-shell
-    gnome.gnome-tweaks
-    whitesur-icon-theme
-    whitesur-gtk-theme
+    pkgs.gnomeExtensions.appindicator
+    pkgs.gnomeExtensions.dash-to-dock
+    pkgs.gnomeExtensions.blur-my-shell
+    pkgs.gnome.gnome-tweaks
+    pkgs.whitesur-icon-theme
+    pkgs.bibata-cursors-translucent
+    
    
     # libraries
-    ntfs3g
-    linuxHeaders
-    linux-firmware
-    fakeroot
-    alsa-utils
-    alsa-firmware
+    pkgs.ntfs3g
+    pkgs.linuxHeaders
+    pkgs.linux-firmware
+    pkgs.fakeroot
+    pkgs.alsa-utils
+    pkgs.alsa-firmware
 
     # terminal utilities
-    streamlink
-    wget
-    unzip
-    time
-    socat
-    rsync
-    ripgrep
-    fzf
-    neofetch
-    mpc-cli
-    mlocate
-    inotify-tools
-    groff
-    ffmpegthumbnailer
-    jellyfin-ffmpeg
-    fd
-    dialog
-    bat
-    which
-    poppler_utils
-    p7zip
-    atool
-    unrar
-    odt2txt
-    xlsx2csv
-    jq
-    mediainfo
-    imagemagick
-    libnotify
+    pkgs.streamlink
+    pkgs.wget
+    pkgs.unzip
+    pkgs.time
+    pkgs.socat
+    pkgs.rsync
+    pkgs.ripgrep
+    pkgs.fzf
+    pkgs.neofetch
+    pkgs.mpc-cli
+    pkgs.mlocate
+    pkgs.inotify-tools
+    pkgs.groff
+    pkgs.ffmpegthumbnailer
+    pkgs.jellyfin-ffmpeg
+    pkgs.fd
+    pkgs.dialog
+    pkgs.bat
+    pkgs.which
+    pkgs.poppler_utils
+    pkgs.p7zip
+    pkgs.atool
+    pkgs.unrar
+    pkgs.odt2txt
+    pkgs.xlsx2csv
+    pkgs.jq
+    pkgs.mediainfo
+    pkgs.imagemagick
+    pkgs.libnotify
 
     #flatpak
-    flatpak
-    flatpak-builder
+    pkgs.flatpak
+    pkgs.flatpak-builder
 
     # system utilities
-    asusctl
-    supergfxctl
-    auto-cpufreq
-
+    pkgs.asusctl
+    pkgs.supergfxctl
+    
+    
     # !!!!!!!!!!!!!!! #
     # dev environment #
     # !!!!!!!!!!!!!!! #
-
-    # rust
-    rustc
-    cargo
-    rust-analyzer
-
-    # python
-    conda
-
-    # javascript
-    #nodejs_20
+  
+    pkgs.git
     
-    # agnostic
-    git
 
-    
+
   ];
 
-  #programs.steam = {
-    #enable = true;
-    #remotePlay.openFirewall = true;
-    #dedicatedServer.openFirewall = true;
-  #};
+ 
+
+
+
+
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
 
   
   #flatpak shit
@@ -149,7 +144,7 @@
  
 
 
-
+ 
   services.asusd.enable = true;
   services.supergfxd.enable = true;
   
