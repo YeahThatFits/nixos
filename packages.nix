@@ -7,7 +7,7 @@
   # $ nix search wget
   
 
-
+  # And ensure gnome-settings-daemon udev rules are enabled 
   services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
 
 
@@ -26,7 +26,8 @@
     gnome-calculator
     gnome-system-monitor
     file-roller
-    gnome-disk-utility
+    #gnome-disk-utility
+    baobab
     gnome-logs
     seahorse
     eog
@@ -52,84 +53,82 @@
     hitori # sudoku game
     atomix # puzzle game
   ]);
-  services.xserver.excludePackages = [ 
-    pkgs.xterm 
-    pkgs.nano
-  ];
 
-  environment.systemPackages = [
+
+  services.xserver.excludePackages = (with pkgs; [ 
+    xterm 
+    nano
+  ]);
+
+  environment.systemPackages = with pkgs; [
 
     #gnome shit
-    pkgs.gnomeExtensions.appindicator
-    pkgs.gnomeExtensions.dash-to-dock
-    pkgs.gnomeExtensions.blur-my-shell
-    pkgs.gnome.gnome-tweaks
-    pkgs.whitesur-icon-theme
-    pkgs.bibata-cursors-translucent
+    gnomeExtensions.appindicator
+    gnomeExtensions.dash-to-dock
+    gnomeExtensions.blur-my-shell
+    gnome.gnome-tweaks
+    whitesur-icon-theme
+    bibata-cursors-translucent
     
    
     # libraries
-    pkgs.ntfs3g
-    pkgs.linuxHeaders
-    pkgs.linux-firmware
-    pkgs.fakeroot
-    pkgs.alsa-utils
-    pkgs.alsa-firmware
+    ntfs3g
+    linuxHeaders
+    linux-firmware
+    fakeroot
+    alsa-utils
+    alsa-firmware
 
-    # terminal utilities
-    pkgs.streamlink
-    pkgs.wget
-    pkgs.unzip
-    pkgs.time
-    pkgs.socat
-    pkgs.rsync
-    pkgs.ripgrep
-    pkgs.fzf
-    pkgs.neofetch
-    pkgs.mpc-cli
-    pkgs.mlocate
-    pkgs.inotify-tools
-    pkgs.groff
-    pkgs.ffmpegthumbnailer
-    pkgs.jellyfin-ffmpeg
-    pkgs.fd
-    pkgs.dialog
-    pkgs.bat
-    pkgs.which
-    pkgs.poppler_utils
-    pkgs.p7zip
-    pkgs.atool
-    pkgs.unrar
-    pkgs.odt2txt
-    pkgs.xlsx2csv
-    pkgs.jq
-    pkgs.mediainfo
-    pkgs.imagemagick
-    pkgs.libnotify
+    #utilities
+    streamlink
+    wget
+    unzip
+    time
+    socat
+    rsync
+    ripgrep
+    fzf
+    neofetch
+    mpc-cli
+    mlocate
+    inotify-tools
+    groff
+    ffmpegthumbnailer
+    jellyfin-ffmpeg
+    fd
+    dialog
+    bat
+    which
+    poppler_utils
+    p7zip
+    atool
+    unrar
+    odt2txt
+    xlsx2csv
+    jq
+    mediainfo
+    imagemagick
+    libnotify
+    git
 
     #flatpak
-    pkgs.flatpak
-    pkgs.flatpak-builder
+    flatpak
+    flatpak-builder
 
-    # system utilities
-    pkgs.asusctl
-    pkgs.supergfxctl
+    # asus system 
+    asusctl
+    supergfxctl
     
-    
-    # !!!!!!!!!!!!!!! #
-    # dev environment #
-    # !!!!!!!!!!!!!!! #
-  
-    pkgs.git
-    
+    #virtual machines
+    virt-manager
+    spice spice-gtk
+    spice-protocol
+    win-virtio
+    win-spice
 
-
+   
+    
   ];
-
- 
-
-
-
 
 
   programs.steam = {
@@ -143,8 +142,22 @@
   services.flatpak.enable = true;
  
 
+  #virtmanager
+  programs.dconf.enable = true;
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemu = {
+        swtpm.enable = true;
+        ovmf.enable = true;
+        ovmf.packages = [ pkgs.OVMFFull.fd ];
+      };
+    };
+    spiceUSBRedirection.enable = true;
+  };
+  services.spice-vdagentd.enable = true;
 
- 
+  #asus system services
   services.asusd.enable = true;
   services.supergfxd.enable = true;
   

@@ -19,4 +19,5 @@
   system.copySystemConfiguration = true;
   system.stateVersion = "23.11";
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelModules = [ "nvidia.NVreg_DynamicPowerManagementVideoMemoryThreshold=0" ];
 }

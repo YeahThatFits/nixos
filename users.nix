@@ -3,18 +3,16 @@
 {
   users.mutableUsers = true;
   # mkpasswd
-  users.users.root.hashedPassword = "!";
   users.groups = {
     samuel.gid = 1000;
   };
   users.users.samuel = {
-    hashedPassword = "!";
     isNormalUser = true;
     home = "/home/samuel";
     shell = pkgs.zsh;
     uid = 1000;
     group = "samuel";
-    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "libvirtd" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
         flatpak
         gnome.gnome-software
