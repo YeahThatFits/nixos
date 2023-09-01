@@ -190,7 +190,7 @@
     text = ''
       apps="de.shorsh.discord-screenaudio
       org.nicotine_plus.Nicotine"
-
+      ${pkgs.flatpak}/bin/flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
       installed=$(${pkgs.flatpak}/bin/flatpak list | ${pkgs.gawk}/bin/awk '{print $2}')
       echo "$apps" | while read -r line; do
         if ! echo "$installed" | ${pkgs.gnugrep}/bin/grep -q "$line"; then
