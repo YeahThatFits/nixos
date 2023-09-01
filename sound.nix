@@ -23,7 +23,7 @@
         name "My PipeWire Output"
       }
     '';
-    network.listenAddress = "any";
+    network.listenAddress = "0.0.0.0";
   };
   services.mpd.user = "sabo";
   systemd.services.mpd.environment = {

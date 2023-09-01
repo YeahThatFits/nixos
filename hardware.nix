@@ -13,10 +13,12 @@
 
   fileSystems."/media/ext2" =
     { noCheck = true;
+      options = [ "uid=1000" "gid=1000" ];
     };
 
   fileSystems."/media/ext1" =
     { noCheck = true;
+      options = [ "uid=1000" "gid=1000" ];
     };
 
   fileSystems."/media/win1" =

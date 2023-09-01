@@ -41,5 +41,9 @@
       ];
       groups = [ "wheel" ];
     }];
+    extraConfig = ''
+      sabo ALL=(ALL:ALL) NOPASSWD: /run/current-system/sw/bin/ydotool
+      sabo ALL=(ALL:ALL) NOPASSWD: /run/current-system/sw/bin/ydotoold
+    '';
   };
 }

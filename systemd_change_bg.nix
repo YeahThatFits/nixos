@@ -32,7 +32,7 @@ in
         OnActiveSec = 0;
         OnUnitActiveSec = "30min";
       };
-      wantedBy = [ "timers.target" ];
+      # wantedBy = [ "timers.target" ];
     };
 
     services."change_bg_safe" = {

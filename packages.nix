@@ -6,8 +6,9 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # gui
-    vivaldi
+    (vivaldi.override { proprietaryCodecs = true; })
     vivaldi-ffmpeg-codecs
+    brave
     keepassxc
     sioyek
     pavucontrol
@@ -47,6 +48,7 @@
     netcat-gnu
     wireguard-tools
     openssh
+    dig
 
     # terminal utilities
     streamlink
@@ -82,6 +84,8 @@
     woeusb
     flatpak
     flatpak-builder
+    yt-dlp
+    time
 
     # system utilities
     efibootmgr
@@ -90,8 +94,11 @@
     wev
     xorg.xev
     xorg.xrandr
+    ydotool
     upower
     pulseaudio
+    nixos-option
+    evtest
 
     # wayland utilities
     mako
@@ -142,8 +149,8 @@
     perl
 
     # python
-    python39
-    python311Packages.pip
+    # python39
+    # python311Packages.pip
 
     # awk
     mawk
@@ -179,4 +186,18 @@
   
   services.flatpak.enable = true;
 
+  system.activationScripts.installFlatpaks = {
+    text = ''
+      apps="de.shorsh.discord-screenaudio
+      org.nicotine_plus.Nicotine"
+
+      installed=$(${pkgs.flatpak}/bin/flatpak list | ${pkgs.gawk}/bin/awk '{print $2}')
+      echo "$apps" | while read -r line; do
+        if ! echo "$installed" | ${pkgs.gnugrep}/bin/grep -q "$line"; then
+          ${pkgs.flatpak}/bin/flatpak install -y flathub "$line"
+        fi
+      done
+      ${pkgs.flatpak}/bin/flatpak update -y
+    '';
+  };
 }

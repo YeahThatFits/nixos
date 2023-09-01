@@ -13,6 +13,8 @@
       ./sound.nix
       ./time_locale.nix
       ./systemd_change_bg.nix
+      ./systemd_route_ips.nix
+      ./systemd_qbittorrent_nox.nix
       # ./systemd_mako.nix
    ];
 
